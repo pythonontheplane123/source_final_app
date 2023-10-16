@@ -59,6 +59,14 @@ model Listing {
   userId String @db.ObjectId
   price Int
 
+  // New fields for API marketplace
+  apiName        String?
+  apiEndpoint    String?
+  apiPrice       Int?
+
+
+
+
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
