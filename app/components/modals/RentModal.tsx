@@ -23,11 +23,11 @@ import Input from '../inputs/Input';
 import Heading from '../Heading';
 
 enum STEPS {
-  CATEGORY = 0,
-  LOCATION = 1,
-  INFO = 2,
+  LOCATION = 0,
+  CATEGORY = 1,
+  DESCRIPTION = 2,
   IMAGES = 3,
-  DESCRIPTION = 4,
+  INFO = 4,
   PRICE = 5,
 }
 
@@ -37,7 +37,8 @@ const RentModal = () => {
   const [apiPrice, setApiPrice] = useState<number>(0);
 
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState(STEPS.CATEGORY);
+  const [step, setStep] = useState(STEPS.LOCATION);
+
 
   const { 
     register, 
@@ -69,6 +70,13 @@ const RentModal = () => {
   const roomCount = watch('roomCount');
   const bathroomCount = watch('bathroomCount');
   const imageSrc = watch('imageSrc');
+
+  const onCloseModal = () => {
+    rentModal.onClose();
+    setStep(STEPS.LOCATION);  // Reset the step state to LOCATION
+    reset();  // Reset the useForm state
+  }
+  
 
   const Map = useMemo(() => dynamic(() => import('../Map'), { 
     ssr: false 
@@ -103,7 +111,7 @@ const RentModal = () => {
       toast.success('Listing created!');
       router.refresh();
       reset();
-      setStep(STEPS.CATEGORY)
+      setStep(STEPS.LOCATION)
       rentModal.onClose();
     })
     .catch(() => {
@@ -133,7 +141,7 @@ const RentModal = () => {
   let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
-        title="Which of these best describes your place?"
+        title="What is the core technology being used?"
         subtitle="Pick a category"
       />
       <div 
@@ -172,7 +180,7 @@ const RentModal = () => {
           value={location} 
           onChange={(value) => setCustomValue('location', value)} 
         />
-        <Map center={location?.latlng} />
+       <Map center={location?.latlng} />
       </div>
     );
   }
@@ -212,8 +220,8 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="Add a photo of your place"
-          subtitle="Show guests what your place looks like!"
+          title="Add a photo representing your product"
+          subtitle="show your value proposition"
         />
         <ImageUpload
           onChange={(value) => setCustomValue('imageSrc', value)}
@@ -227,12 +235,12 @@ const RentModal = () => {
     bodyContent = (
       <div className="flex flex-col gap-8">
         <Heading
-          title="How would you describe your place?"
-          subtitle="Short and sweet works best!"
+          title="Give your service a name + description"
+          subtitle="Help users discover you"
         />
         <Input
           id="title"
-          label="Title"
+          label="Name"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -282,7 +290,7 @@ const RentModal = () => {
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-      onClose={rentModal.onClose}
+      onClose={onCloseModal}
       body={bodyContent}
     />
   );
