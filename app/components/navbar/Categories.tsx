@@ -12,6 +12,23 @@ import {
   GiIsland,
   GiWindmill
 } from 'react-icons/gi';
+
+import chatgpt from '../../../public/chatgpt.svg';
+import huggingface from '../../../public/huggingface.svg';
+import cohere from '../../../public/cohere.svg';
+import azure from '../../../public/azure.svg';
+import vertexai from '../../../public/vertexai.svg';
+import supabase from '../../../public/supabase.svg';
+import brain from '../../../public/brain.svg';
+import qdrant from '../../../public/qdrant.svg';
+import replicate from '../../../public/replicate.svg';
+import weaviate from '../../../public/weaviate.svg';
+import pinecone from '../../../public/pinecone.svg';
+import autogpt from '../../../public/autogpt.svg';
+import babyagi from '../../../public/babyagi.svg';
+import chroma from '../../../public/chroma.svg';
+import chatlocalai from '../../../public/chatlocalai.svg';
+
 import { FaSkiing } from 'react-icons/fa';
 import { BsSnow } from 'react-icons/bs';
 import { IoDiamond } from 'react-icons/io5';
@@ -23,78 +40,78 @@ import Container from '../Container';
 
 export const categories = [
   {
-    label: 'Beach',
-    icon: TbBeach,
+    label: 'OpenAI',
+    icon: chatgpt,
     description: 'This property is close to the beach!',
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
+    label: 'Azure AI',
+    icon: azure,
     description: 'This property is has windmills!',
   },
   {
-    label: 'Modern',
-    icon: MdOutlineVilla,
+    label: 'Cohere',
+    icon: cohere,
     description: 'This property is modern!'
   },
   {
-    label: 'Countryside',
-    icon: TbMountain,
+    label: 'Huggingface',
+    icon: huggingface,
     description: 'This property is in the countryside!'
   },
   {
-    label: 'Pools',
-    icon: TbPool,
+    label: 'Vertex AI',
+    icon: vertexai,
     description: 'This is property has a beautiful pool!'
   },
   {
-    label: 'Islands',
-    icon: GiIsland,
-    description: 'This property is on an island!'
+    label: 'Replicate',
+    icon: replicate,
+    description: 'This is on an island!'
   },
   {
-    label: 'Lake',
-    icon: GiBoatFishing,
+    label: 'LocalAI',
+    icon: chatlocalai,
     description: 'This property is near a lake!'
   },
   {
-    label: 'Skiing',
-    icon: FaSkiing,
+    label: 'Custom',
+    icon: brain,
     description: 'This property has skiing activies!'
   },
   {
-    label: 'Castles',
-    icon: GiCastle,
+    label: 'AutoGPT',
+    icon: autogpt,
     description: 'This property is an ancient castle!'
   },
   {
-    label: 'Caves',
-    icon: GiCaveEntrance,
+    label: 'BabyAGI',
+    icon: babyagi,
     description: 'This property is in a spooky cave!'
   },
   {
-    label: 'Camping',
-    icon: GiForestCamp,
+    label: 'ChromaDB',
+    icon: chroma,
     description: 'This property offers camping activities!'
   },
   {
-    label: 'Arctic',
-    icon: BsSnow,
+    label: 'SupabaseVB',
+    icon: supabase,
     description: 'This property is in arctic environment!'
   },
   {
-    label: 'Desert',
-    icon: GiCactus,
+    label: 'Weaviate',
+    icon: weaviate,
     description: 'This property is in the desert!'
   },
   {
-    label: 'Barns',
-    icon: GiBarn,
+    label: 'Qdrant',
+    icon: qdrant,
     description: 'This property is in a barn!'
   },
   {
-    label: 'Lux',
-    icon: IoDiamond,
+    label: 'Pinecone',
+    icon: pinecone,
     description: 'This property is brand new and luxurious!'
   }
 ]

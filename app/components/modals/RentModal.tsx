@@ -34,6 +34,7 @@ enum STEPS {
 const RentModal = () => {
   const router = useRouter();
   const rentModal = useRentModal();
+  const [apiPrice, setApiPrice] = useState<number>(0);
 
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
@@ -58,6 +59,7 @@ const RentModal = () => {
       price: 1,
       title: '',
       description: '',
+      apiPrice: 0
     }
   });
 
@@ -96,7 +98,7 @@ const RentModal = () => {
     
     setIsLoading(true);
 
-    axios.post('/api/listings', data)
+    axios.post('/api/listings', { ...data, apiPrice: apiPrice })
     .then(() => {
       toast.success('Listing created!');
       router.refresh();
@@ -254,7 +256,7 @@ const RentModal = () => {
       <div className="flex flex-col gap-8">
         <Heading
           title="Now, set your price"
-          subtitle="How much do you charge per night?"
+          subtitle="How much do you charge per month?"
         />
         <Input
           id="price"
@@ -266,6 +268,7 @@ const RentModal = () => {
           errors={errors}
           required
         />
+
       </div>
     )
   }
@@ -274,7 +277,7 @@ const RentModal = () => {
     <Modal
       disabled={isLoading}
       isOpen={rentModal.isOpen}
-      title="Airbnb your home!"
+      title="Post your product!"
       actionLabel={actionLabel}
       onSubmit={handleSubmit(onSubmit)}
       secondaryActionLabel={secondaryActionLabel}
